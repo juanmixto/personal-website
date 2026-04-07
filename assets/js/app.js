@@ -121,7 +121,7 @@
     });
 
     /* ── Contact form → Web3Forms ───────────────────────── */
-    const WEB3FORMS_KEY = '647048';
+    const CONTACT_ENDPOINT = '/api/contact'; // proxied → n8n webhook
 
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
@@ -134,16 +134,13 @@
             btn.textContent = isES ? 'Enviando…' : 'Sending…';
 
             const payload = {
-                access_key: WEB3FORMS_KEY,
                 name:    document.getElementById('name').value,
                 email:   document.getElementById('email').value,
-                message: document.getElementById('message').value,
-                subject: isES ? 'Nuevo mensaje — juanortega.dev' : 'New message — juanortega.dev',
-                from_name: 'Juan Ortega Web'
+                message: document.getElementById('message').value
             };
 
             try {
-                const res  = await fetch('https://api.web3forms.com/submit', {
+                const res  = await fetch(CONTACT_ENDPOINT, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(payload)

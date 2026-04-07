@@ -120,19 +120,60 @@
         }
     });
 
-    /* ── Contact form ───────────────────────────────────── */
+    /* ── Contact form → Web3Forms ───────────────────────── */
+    const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE'; // https://web3forms.com
+
     const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
     if (form) {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            const name    = document.getElementById('name').value;
-            const replyTo = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const subj    = isES
-                ? `Mensaje de ${name}`
-                : `Message from ${name}`;
-            const body    = message + '\n\n' + (isES ? 'Responder a: ' : 'Reply to: ') + replyTo;
-            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = isES ? 'Enviando…' : 'Sending…';
+
+            const payload = {
+                access_key: WEB3FORMS_KEY,
+                name:    document.getElementById('name').value,
+                email:   document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                subject: isES ? 'Nuevo mensaje — juanortega.dev' : 'New message — juanortega.dev',
+                from_name: 'Juan Ortega Web'
+            };
+
+            try {
+                const res  = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    form.reset();
+                    showStatus('success', isES
+                        ? '✓ Mensaje enviado. Te respondo pronto.'
+                        : '✓ Message sent. I\'ll get back to you soon.');
+                } else {
+                    throw new Error(data.message || 'Error');
+                }
+            } catch {
+                showStatus('error', isES
+                    ? 'Error al enviar. Escríbeme directamente a juan.ortega.saceda@gmail.com'
+                    : 'Send failed. Email me directly at juan.ortega.saceda@gmail.com');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = isES ? 'Enviar mensaje' : 'Send Message';
+            }
         });
+    }
+
+    function showStatus(type, msg) {
+        if (!formStatus) return;
+        formStatus.textContent = msg;
+        formStatus.className = 'form-status form-status--' + type;
+        formStatus.hidden = false;
+        setTimeout(() => { formStatus.hidden = true; }, 6000);
     }
 }());

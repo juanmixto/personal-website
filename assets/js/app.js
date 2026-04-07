@@ -121,7 +121,7 @@
     });
 
     /* ── Contact form → Web3Forms ───────────────────────── */
-    const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE'; // https://web3forms.com
+    const WEB3FORMS_KEY = '647048';
 
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');

@@ -10,6 +10,21 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Profile photo pending
 - Certifications section pending (data needed from user)
 
+## [1.3.0] – 2026-04-07 — Security Hardening
+
+### Security fixes
+- **HSTS** added: `Strict-Transport-Security: max-age=31536000; includeSubDomains`
+- **CSP strengthened**: full `Content-Security-Policy` with `default-src 'self'`, `script-src 'self'`, `style-src 'self'`, `font-src 'self'`, `object-src 'none'`, `form-action 'none'`
+- **Server version hidden**: `server_tokens off` — header now shows `nginx` without version
+- **Permissions-Policy** added: blocks camera, microphone, geolocation, payment, USB
+- **Inline JS removed**: all `onclick=` handlers moved to `addEventListener` in `app.js`
+- **Email obfuscated**: address assembled at runtime in JS, absent from raw HTML
+- **Rate limiting**: `limit_req_zone` 30r/m per IP with burst of 20
+- **X-XSS-Protection** removed (deprecated header, no longer needed)
+
+### Refactor
+- All page JS consolidated into `assets/js/app.js` (single external file, both EN & ES)
+
 ## [1.2.0] – 2026-04-07
 
 ### Added

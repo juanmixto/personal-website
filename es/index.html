@@ -73,8 +73,8 @@
                     <a href="#contact">Contacto</a>
                     <a href="../en/index.html" class="lang-switch">EN</a>
                 </nav>
-                <button class="theme-toggle" aria-label="Cambiar tema" onclick="toggleTheme()">☀</button>
-                <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMenu(this)">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">☀</button>
+                <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -313,9 +313,9 @@
                             <div class="contact-link-icon">✉</div>
                             <div class="contact-link-text">
                                 <strong>Email</strong>
-                                <span>juan.ortega.saceda@gmail.com</span>
+                                <span data-email></span>
                             </div>
-                            <button class="copy-btn" onclick="copyEmail(this)" aria-label="Copiar email">
+                            <button class="copy-btn" aria-label="Copiar email">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                             </button>
                         </div>
@@ -328,7 +328,7 @@
                         </a>
                     </div>
                 </div>
-                <form class="contact-form reveal reveal-delay-2" onsubmit="handleForm(event)">
+                <form class="contact-form reveal reveal-delay-2" id="contact-form">
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input type="text" id="name" name="name" placeholder="Tu nombre" required>
@@ -361,89 +361,6 @@
 
 </div>
 
-<script>
-    function toggleTheme() {
-        const html = document.documentElement;
-        const isDark = html.getAttribute('data-theme') === 'dark';
-        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        document.querySelector('.theme-toggle').textContent = isDark ? '☾' : '☀';
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    }
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-        document.querySelector('.theme-toggle').textContent = saved === 'light' ? '☾' : '☀';
-    }
-
-    function toggleMenu(btn) {
-        const nav = document.getElementById('main-nav');
-        const open = nav.classList.toggle('nav-open');
-        btn.setAttribute('aria-expanded', open);
-        btn.classList.toggle('is-open', open);
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
-    const spyObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const active = document.querySelector(`.main-nav a[href="#${e.target.id}"]`);
-                if (active) active.classList.add('active');
-            }
-        });
-    }, { threshold: 0.4 });
-    sections.forEach(s => spyObserver.observe(s));
-
-    const btt = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        btt.classList.toggle('visible', window.scrollY > 500);
-    });
-
-    function copyEmail(btn) {
-        navigator.clipboard.writeText('juan.ortega.saceda@gmail.com').then(() => {
-            btn.classList.add('copied');
-            setTimeout(() => btn.classList.remove('copied'), 2000);
-        });
-    }
-
-    // ── Scroll progress bar
-    const prog = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-        const h = document.documentElement;
-        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-        prog.style.width = pct + '%';
-    }, { passive: true });
-
-    // ── Typing animation
-    const phrases = ['sistemas escalables', 'equipos de alto impacto', 'organizaciones AI-native', 'cultura de ingeniería'];
-    let pi = 0, ci = 0, deleting = false;
-    const el = document.getElementById('typed-word');
-    function type() {
-        const word = phrases[pi];
-        if (!deleting) {
-            el.textContent = word.slice(0, ++ci);
-            if (ci === word.length) { deleting = true; setTimeout(type, 2200); return; }
-        } else {
-            el.textContent = word.slice(0, --ci);
-            if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-        }
-        setTimeout(type, deleting ? 55 : 85);
-    }
-    setTimeout(type, 3000);
-
-    function handleForm(e) {
-        e.preventDefault();
-        const name    = document.getElementById('name').value;
-        const email   = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        window.location.href = `mailto:juan.ortega.saceda@gmail.com?subject=Mensaje de ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nResponder a: ' + email)}`;
-    }
-</script>
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>

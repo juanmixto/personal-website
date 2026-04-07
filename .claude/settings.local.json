@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs cat:*)",
+      "Bash(curl -sI https://mypage.traeficserver.duckdns.org/en/index.html)",
+      "Bash(gh auth:*)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
+    ]
+  }
+}

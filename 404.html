@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found – Juan Ortega</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;">
+    <div>
+        <div style="font-size:5rem;font-weight:800;background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem;">404</div>
+        <h1 style="font-size:1.5rem;font-weight:700;margin-bottom:.75rem;">Page not found</h1>
+        <p style="color:var(--muted);margin-bottom:2rem;max-width:360px;">This page doesn't exist or has been moved.</p>
+        <a href="/en/index.html" class="btn btn-primary">← Back to home</a>
+    </div>
+</div>
+<script>
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+</body>
+</html>

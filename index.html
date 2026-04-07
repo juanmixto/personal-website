@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="refresh" content="0; URL=en/index.html" />
-  </head>
-  <body>
-    <p>Redirecting to <a href="en/index.html">English version</a>...</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Ortega</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<script>
+    // Auto-detect browser language, fall back to English
+    const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    const dest = lang.startsWith('es') ? 'es/index.html' : 'en/index.html';
+    window.location.replace(dest);
+</script>
+<noscript>
+    <meta http-equiv="refresh" content="0; URL=en/index.html">
+    <p><a href="en/index.html">Continue in English</a> · <a href="es/index.html">Continuar en español</a></p>
+</noscript>
+</body>
 </html>

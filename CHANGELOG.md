@@ -8,6 +8,24 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 - Profile photo pending
+- Certifications section pending (data needed from user)
+
+## [1.2.0] – 2026-04-07
+
+### Added
+- Self-hosted Inter font (48KB WOFF2 variable font, no Google Fonts dependency)
+- JSON-LD Person structured data (EN & ES) for Google rich results
+- Language auto-detect on index.html (redirects ES browsers to /es/)
+- Open-to-work banner with green pulse dot below header
+- Scroll progress bar (gradient line at top of page)
+- Typing animation cycling through phrases in hero headline
+- Custom 404 page with branded design
+- Gzip compression in nginx (CSS: ~28KB → ~7KB)
+- Cache-Control headers: 1 year for assets, no-cache for HTML
+
+### Changed
+- nginx.conf: added gzip, cache headers, custom error_page 404
+- index.html: replaced meta-refresh with JS language detection + noscript fallback
 
 ## [1.1.0] – 2026-04-07
 

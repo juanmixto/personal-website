@@ -1,4 +1,15 @@
 /* ═══════════════════════════════════════════════════
+   SELF-HOSTED FONT
+═══════════════════════════════════════════════════ */
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════
    TOKENS & RESET
 ═══════════════════════════════════════════════════ */
 :root {
@@ -768,6 +779,56 @@ section { padding: 6rem 1.5rem; }
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ═══════════════════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════════════════ */
+.scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-2), #a78bfa);
+    z-index: 200;
+    transition: width .1s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   OPEN TO WORK BANNER
+═══════════════════════════════════════════════════ */
+.otw-banner {
+    background: linear-gradient(90deg, rgba(99,102,241,.12), rgba(167,139,250,.08));
+    border-bottom: 1px solid rgba(99,102,241,.2);
+    text-align: center;
+    padding: .55rem 1rem;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: .06em;
+    position: relative;
+    z-index: 99;
+}
+
+.otw-banner span {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.otw-dot {
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-block;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.4); }
+    50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
 }
 
 /* ═══════════════════════════════════════════════════

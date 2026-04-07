@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mypage.traeficserver.duckdns.org/sitemap.xml

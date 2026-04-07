@@ -10,7 +10,26 @@
       "Bash(git config:*)",
       "Bash(git branch:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Read(//home/juan/.ssh/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://api.github.com/users/juanmixto)",
+      "Bash(ssh -T git@github.com -o StrictHostKeyChecking=no)",
+      "Bash(curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg)",
+      "Bash(sudo dd:*)",
+      "Bash(sudo chmod:*)",
+      "Bash(dpkg --print-architecture)",
+      "Bash(echo \"deb [arch=$\\(dpkg --print-architecture\\) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\")",
+      "Bash(sudo tee:*)",
+      "Bash(sudo apt-get:*)",
+      "Bash(dd of=/tmp/githubcli-archive-keyring.gpg)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL https://github.com/cli/cli/releases/download/v2.63.2/gh_2.63.2_linux_amd64.tar.gz -o /tmp/gh.tar.gz)",
+      "Bash(tar -xzf /tmp/gh.tar.gz -C /tmp/)",
+      "Bash(/tmp/gh_2.63.2_linux_amd64/bin/gh --version)",
+      "Bash(/tmp/gh_2.63.2_linux_amd64/bin/gh auth:*)",
+      "Bash(/tmp/gh_2.63.2_linux_amd64/bin/gh repo:*)",
+      "Bash(/tmp/gh_2.63.2_linux_amd64/bin/gh ssh-key:*)",
+      "Bash(git push:*)"
     ]
   }
 }

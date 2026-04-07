@@ -7,9 +7,25 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-- LinkedIn URL pending
 - Profile photo pending
-- Favicon pending
+
+## [1.1.0] – 2026-04-07
+
+### Added
+- Favicon SVG with "JO" initials
+- `robots.txt` and `sitemap.xml` with hreflang
+- Open Graph + Twitter Card meta tags (EN & ES)
+- Canonical URL meta tags + hreflang link tags
+- Skip-to-content link (keyboard / screen reader accessibility)
+- Scroll spy: active nav link highlights current section
+- Mobile hamburger menu (nav was hidden on small screens)
+- Hero scroll arrow with bounce animation
+- Back-to-top button (appears after 500px scroll)
+- Copy-to-clipboard button on email contact link
+- LinkedIn URL linked to real profile
+
+### Fixed
+- Nav links now hidden behind hamburger on mobile instead of disappearing
 
 ---
 
